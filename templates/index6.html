@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+.container {
+  display: flex; /* or inline-flex */
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  align-items: felx-start;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  gap: 10px;
+  align-items: center;
+}
+
+.option-box {
+    display: flex; /* or inline-flex */
+  flex-direction: row;
+  justify-content: center;
+  gap: 100px;
+  align-items: felx-start;
+}
+
+.option-box>div {
+    display: flex; /* or inline-flex */
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    align-items: felx-start;
+}
+
+h1{ font-size: 30px;
+
+}
+
+#output{
+  background: wheat;
+}
+
+
+.logo {
+    width: 250px;
+    height: 150px;
+    background: url(https://files.mtstatic.com/site_4425/9387/1?Expires=1685993768&Signature=WpFS21LDK6yVxvzLUFctl9ALY1sZv0z0zShmy7N44gKLjtGfIxq9JyiSzUYKrRph7Z8jHEAghxT2ywVvEKlvPUIXn3xtfO574aIN2iVTCa~H4AqnMrDGXv~ESvaAQlq~iz74hxRRHBEMA3MS3Heqb3FbwLABvUiGBmQFa8HNVXI_&Key-Pair-Id=APKAJ5Y6AV4GI7A555NA);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+form textarea{
+      background:#eee;
+      width:100%;
+      border-width:1;
+      padding:.35em .2em;
+      margin-bottom:8px;
+      font-size: 1.2em;
+    }
+
+
+
+</style>
+</head>
+
+
+
+
+
+
+
+
+
+<body> 
+<div class="main">
+<form method="POST" class="container">
+    <div class="header">
+        <div class="logo"></div>
+        <div><h1>Eeuclidean Distance Calculator</h1></div>
+    </div>
+
+
+
+    <div class="option-box">
+        <div>
+         
+         
+            <div>
+                <label for="sent-number1" id="sent-number-label1">Source X: </label>
+                <input type="number1" name="num-sentences1" value="2" id="sent-number1">
+            </div>
+
+               <div>
+                <label for="sent-number2" id="sent-number-label2">Source  Y: </label>
+                <input type="number2" name="num-sentences2" value="15" id="sent-number2">
+            </div>
+
+
+        </div>
+        <div>
+          
+          
+            <div>
+                <label for="word-count1" id="sent-size-label1"> Destination X: </label>
+                <input type="number1" name="word-count1" value="24" id="word-count1">
+            </div>
+
+
+             <div>
+                <label for="word-count2" id="sent-size-label2"> Destination Y: </label>
+                <input type="number2" name="word-count2" value="14" id="word-count2">
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <input type="submit">
+
+
+
+
+
+<div>
+    <div> <font size="4.4">Eeuclidean Distance </font>    </div>
+    <textarea name="output-text" rows = "10" cols = "100"  font-size=18px  width="500px" id="output" disabled="disabled"></textarea>
+    
+</div>
+
+</div>
+
+</form>
+
+
+
+
+
+<script>
+    $(document).ready(function() {
+
+
+
+
+        $("form").on("submit", function(event) {
+            event.preventDefault();
+	        let input = $("#input").val();
+	        let sentNumber1 = $("#sent-number1").val();
+                let sentNumber2 = $("#sent-number2").val();
+
+	        let wordCount1 = $("#word-count1").val();
+                let wordCount2 = $("#word-count2").val();
+	     
+
+            $.ajax({
+                data: {
+                    input: input,
+                    sentNumber1: sentNumber1,
+                    sentNumber2: sentNumber2,
+
+                    wordCount1: wordCount1,
+                    wordCount2: wordCount2,
+                 
+       
+                },
+                type: "POST",
+                url: "/get",
+            }).done(function(data) {
+               
+                    $("#output").val(data);
+               
+            });
+
+	        event.preventDefault();
+        });
+    });
+</script>
+</body>
+
+</html>

@@ -5,7 +5,7 @@
 ![plot](./img3.png)
 
 **Following steps are required for dockerizing:**
-- [x] Install the docker: sudo apt  install docker.io
+- [x] Install the docker: `sudo apt  install docker.io`
 - [x] Create an account on dockerhub and take your USER_NAME
 - [x] Create a docker file for your flask application. You can find an example [here](https://github.com/fatemehsrz/Docker_Flask_Tutorial/blob/main/Dockerfile).
 - [x] Create a requirements.txt file for your application. You can find an example [here](https://github.com/fatemehsrz/Docker_Flask_Tutorial/blob/main/requirements.txt).
